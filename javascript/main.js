@@ -382,6 +382,106 @@ function checkWin(){
 }
 
 // МАЛЕНЬКИЕ ЛИСТОЧКИ //
+let sleaf16=document.getElementById("sleaf16");
+let observer15=new IntersectionObserver(entries=>{
+    entries.forEach(entry=>{
+        if(entry.isIntersecting){
+        sleaf16.classList.add("fall16");
+        observer15.unobserve(sleaf16);
+    }
+    });
+});
+
+observer15.observe(sleaf16); 
+
+
+let sleaf17=document.getElementById("sleaf17");
+let observer16=new IntersectionObserver(entries=>{
+    entries.forEach(entry=>{
+        if(entry.isIntersecting){
+        sleaf17.classList.add("fall17");
+        observer16.unobserve(sleaf17);
+    }
+    });
+});
+
+observer16.observe(sleaf17); 
+
+
+let sleaf18=document.getElementById("sleaf18");
+let observer17=new IntersectionObserver(entries=>{
+    entries.forEach(entry=>{
+        if(entry.isIntersecting){
+        sleaf18.classList.add("fall18");
+        observer17.unobserve(sleaf18);
+    }
+    });
+});
+
+observer17.observe(sleaf18); 
+
+
+let sleaf19=document.getElementById("sleaf19");
+let observer18=new IntersectionObserver(entries=>{
+    entries.forEach(entry=>{
+        if(entry.isIntersecting){
+        sleaf19.classList.add("fall19");
+        observer18.unobserve(sleaf19);
+    }
+    });
+});
+
+observer18.observe(sleaf19); 
+
+
+let sleaf20=document.getElementById("sleaf20");
+let observer19=new IntersectionObserver(entries=>{
+    entries.forEach(entry=>{
+        if(entry.isIntersecting){
+        sleaf20.classList.add("fall20");
+        observer19.unobserve(sleaf20);
+    }
+    });
+});
+
+observer19.observe(sleaf20); 
+
+let sleaf21=document.getElementById("sleaf21");
+let observer20=new IntersectionObserver(entries=>{
+    entries.forEach(entry=>{
+        if(entry.isIntersecting){
+        sleaf21.classList.add("fall21");
+        observer20.unobserve(sleaf21);
+    }
+    });
+});
+
+observer20.observe(sleaf21); 
+
+let sleaf22=document.getElementById("sleaf22");
+let observer21=new IntersectionObserver(entries=>{
+    entries.forEach(entry=>{
+        if(entry.isIntersecting){
+        sleaf22.classList.add("fall22");
+        observer21.unobserve(sleaf22);
+    }
+    });
+});
+
+observer21.observe(sleaf22); 
+
+
+let sleaf23=document.getElementById("sleaf23");
+let observer22=new IntersectionObserver(entries=>{
+    entries.forEach(entry=>{
+        if(entry.isIntersecting){
+        sleaf23.classList.add("fall23");
+        observer22.unobserve(sleaf23);
+    }
+    });
+});
+
+observer22.observe(sleaf23); 
 
 
 });
