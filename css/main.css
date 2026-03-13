@@ -684,6 +684,7 @@ body{
 
 }
 
+
 .text1{
     color: #66AEF4;
     margin-top: 1vw;
@@ -712,11 +713,20 @@ body{
 
 .plant1{
     position: absolute;
-    margin-left: 49vw;
+    margin-left: 47vw;
     margin-top: 12.5vw;
     transition: 0.5s;
     width: 24.95vw;
     height: 34.04vw;
+    display: block;
+}
+
+.plant1Big{
+    position: absolute;
+    margin-left: 45vw;
+    margin-top: 12.5vw;
+    animation: fl 3s infinite alternate ease-in-out;
+    display: none;
 }
 
 .can{
@@ -726,11 +736,23 @@ body{
     cursor: grab;
     width: 29.49vw;
     height: 19.27vw;
+    opacity: 1;
 }
 
-.hidden{
-    display: none;
+.canActive{
+    position: absolute;
+    margin-top: 10vw;
+    margin-left: 3vw;
+    cursor: grabbing;
+    width: 42.22vw;
+    height: 35.22vw;
+    pointer-events: none;
+    opacity: 0;
 }
+
+
+
+
 
 .bush1{
     position: absolute;
@@ -817,6 +839,14 @@ body{
     margin-left: 3vw;
     width: 70.05vw;
     height: 29.17vw;
+}
+
+.plant2Win{
+    position: absolute;
+    margin-top: 14vw;
+    margin-left: 23vw;
+    display: none;
+    
 }
 
 .apples{
@@ -968,7 +998,7 @@ body{
 }
 
 .big{
-    transform: scale(5);
+    transform: scale(5); 
     animation: shake-bottom 0.8s cubic-bezier(0.455, 0.030, 0.515, 0.955) ease;
 }
 

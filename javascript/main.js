@@ -88,87 +88,84 @@ observer6.observe(sleaf7);
 
 
 
-// Я НЕ ПОНИМАЮ КАК СДЕЛАТЬ ДУРАЦКИЙ ДРАГ&ДРОП//
-///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+// ИГРА С ПОМИДОРКАМИ //
 
-let openTomato=document.getElementById("tomatoGame");
-let popup1=document.getElementById("popup1");
-let close1=document.getElementById("closePopup1");
-
-
-let can=document.getElementById("can");
-let canActive=document.getElementById("canActive");
-
-let plant1Small=document.getElementById("plant1Small");
-let plant1Big=document.getElementById("plant1Big");
-
-let grown=false;
-let dragging=false;
+let openTomato = document.getElementById("tomatoGame");
+let popup1 = document.getElementById("popup1");
+let close1 = document.getElementById("closePopup1");
 
 openTomato.addEventListener("click", function(){
     popup1.style.display="block";
 });
 close1.addEventListener("click", function(){
     popup1.style.display="none";
+    resetGame()
 });
 
-can.onmouseup=()=>{
-    can.classList.remove("hidden");
-    canActive.classList.add("hidden");
-};
 
-can.addEventListener("mousedown", startDrag);
+const can = document.getElementById('can');
+const canActive = document.getElementById('canActive');
 
-function startDrag (e){
+if (can && canActive) {
+  let isDragging = false;
+  can.draggable = false;
+
+  can.addEventListener('mousedown', (e) => {
     e.preventDefault();
+    isDragging = true;
+    
+    can.style.opacity = '0';
+    canActive.style.opacity = '1';
+    canActive.style.position = 'fixed';
+    canActive.style.marginLeft = '0';
+    canActive.style.marginTop = '0';
+    canActive.style.left = e.clientX - canActive.offsetWidth / 2 + 'px';
+    canActive.style.top = e.clientY - canActive.offsetHeight / 2 + 'px';
+  });
 
-    can.classList.add("hidden");
-    canActive.classList.remove("hidden");
-    canActive.classList.add("dragging");
+  document.addEventListener('mousemove', (e) => {
+    if (!isDragging) return;
+    canActive.style.left = e.clientX - canActive.offsetWidth / 2 + 'px';
+    canActive.style.top = e.clientY - canActive.offsetHeight / 2 + 'px';
+  });
 
-    dragging=true;
+  const stopDrag = () => {
+    if (!isDragging) return;
+    isDragging = false;
+    can.style.opacity = '1';
+    canActive.style.opacity = '0';
+    canActive.style.left = '';
+    canActive.style.top = '';
+    canActive.style.position = '';
+    canActive.style.marginLeft = '';
+    canActive.style.marginTop = '';
+  };
 
-document.addEventListener("mousemove", onDrag);
+  document.addEventListener('mouseup', stopDrag);
+  document.addEventListener('mouseleave', stopDrag);
 }
 
-function onDrag(e){
-    if(dragging)return;
+document.addEventListener('mousemove', (e) => {
+  const canActive = document.getElementById('canActive');
+  const plant1Small = document.getElementById('plant1Small');
+  const plant1Big = document.getElementById('plant1Big');
+  
+  if (!canActive || !plant1Small || !plant1Big) return;
+  if (canActive.style.opacity !== '1') return;
+  
+  let r1 = canActive.getBoundingClientRect();
+  let r2 = plant1Small.getBoundingClientRect();
+  
+  if (r1.left < r2.right && r1.right > r2.left && 
+      r1.top < r2.bottom && r1.bottom > r2.top) {
+    plant1Small.style.display = 'none';
+    plant1Big.style.display = 'block';
+  }
+});
+// ИГРА С ПОМИДОРКАМИ //
 
-    let newLeft=e.clientX-canActive.left-offsetX;
-    let newTop=e.clientY-canActive.top-offsetY;
 
-
-    canActive.style.left=newLeft+"vw";
-    canActive.style.top=newTop+"vw";
-    canActive.style.bottom="auto";
-    canActive.style.right="auto";
-
-    check();
-};
-
-function check(){
-    if(grown)return;
-
-    let canRect=canActive.getBoundingClientRect();
-    let plant1Rect=plant1Small.getBoundingClientRect();
-
-    if(
-        canRect.left<plant1Rect.right &&
-        canRect.right>plant1Rect.left &&
-        canRect.top<plant1Rect.bottom &&
-        canRect.bottom>plant1Rect.top
-    ){ grown=true;
-        plant1Small.classList.add("hidden");
-        plant1Big.classList.remove("hidden");
-    }
-    if(grown=true){
-        plant1Small.classList.add("hidden");
-        plant1Big.classList.remove("hidden");}
-};
-
-///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-// Я НЕ ПОНИМАЮ КАК СДЕЛАТЬ ДУРАЦКИЙ ДРАГ&ДРОП//
-
+// МАЛЕНЬКИЕ ЛИСТОЧКИ //
 let sleaf8=document.getElementById("sleaf8");
 let observer7=new IntersectionObserver(entries=>{
     entries.forEach(entry=>{
@@ -180,14 +177,19 @@ let observer7=new IntersectionObserver(entries=>{
 });
 
 observer7.observe(sleaf8);
+// МАЛЕНЬКИЕ ЛИСТОЧКИ //
 
 
 // ИГРА С ЯБЛОКАМИ //
 let openApple = document.getElementById("appleGame");
 let popup2 = document.getElementById("popup2");
 let close2 = document.getElementById("closePopup2");
-let plant2 = document.getElementById("plant2"); 
 let plant2Win = document.getElementById("plant2Win");
+
+let apples = document.querySelectorAll(".apple");
+let worm = document.getElementById("worm");
+
+let applesLeft = apples.length;
 
 openApple.addEventListener("click", function(){
     popup2.style.display="block";
@@ -197,17 +199,18 @@ close2.addEventListener("click", function(){
     resetGame()
 });
 
-let apples = document.querySelectorAll(".apple");
-let worm = document.getElementById("worm");
 
-apples.forEach(apple =>{
-    if(!apple.classList.contains("worm")){
-        apple.addEventListener("click", function(){
-            apple.style.display = "none"
-            checkWin()
-        });
-    };
+apples.forEach(function(apple){
+    apple.addEventListener("click", function(){
+        if(apple.style.display = "none") return;
+        apple.style.display = "none";
+        applesLeft--;
+
+        checkWin();
+    });
 });
+
+
 
 worm.addEventListener("click", function(){
     worm.classList.add("big");
@@ -217,31 +220,26 @@ worm.addEventListener("click", function(){
     }, 1000);
 });
 
+
+
 function checkWin(){
-    let left = 0
-
-    apples.forEach(a =>{
-        if(a.style.display !== "none" && !a.classList.contains("worm")){
-            left++
-        };
-    });
-
-    if(left === 0){
-        plant2.classList.add("hidden");
-        plant2Win.classList.remove("hidden");
-        plant2Win.style.marginTop = "11.3vw";
-        worm.classList.add("hidden");
+    if(applesLeft === 0){
+        plant2Win.style.display = "block";
+        worm.style.display = "none";
     };
 };
 
 function resetGame(){
-    apples.forEach(a => {
+    apples.forEach(function(a) {
         a.style.display = "block";
-        a.classList.remove("big");
     });
 
-    plant2.classList.remove("hidden");
-    plant2Win.classList.add("hidden");
+    worm.style.display = "block";
+    worm.classList.remove("big");
+
+    plant2Win.style.display = "none";
+
+    applesLeft = apples.length;
 };
 // ИГРА С ЯБЛОКАМИ //
 
@@ -330,7 +328,7 @@ let observer14=new IntersectionObserver(entries=>{
 });
 
 observer14.observe(sleaf15); 
-
+// МАЛЕНЬКИЕ ЛИСТОЧКИ //
 
 
 
