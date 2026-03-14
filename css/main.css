@@ -846,6 +846,7 @@ body{
     margin-top: 14vw;
     margin-left: 23vw;
     display: none;
+    z-index: 1000000000;
     
 }
 
@@ -995,6 +996,7 @@ body{
     margin-top: 30vw;
     margin-left: 57vw;
     cursor: pointer;
+    opacity: 1;
 }
 
 .big{
@@ -1605,4 +1607,8 @@ body{
     margin-left: 7vw;
     width: 62.81vw;
     height: 40.47vw;
+}
+
+.hidden{
+    display: none;
 }

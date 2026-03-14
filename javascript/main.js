@@ -86,8 +86,6 @@ let observer6=new IntersectionObserver(entries=>{
 observer6.observe(sleaf7);
 // МАЛЕНЬКИЕ ЛИСТОЧКИ //
 
-
-
 // ИГРА С ПОМИДОРКАМИ //
 
 let openTomato = document.getElementById("tomatoGame");
@@ -165,6 +163,7 @@ document.addEventListener('mousemove', (e) => {
 // ИГРА С ПОМИДОРКАМИ //
 
 
+
 // МАЛЕНЬКИЕ ЛИСТОЧКИ //
 let sleaf8=document.getElementById("sleaf8");
 let observer7=new IntersectionObserver(entries=>{
@@ -196,42 +195,45 @@ openApple.addEventListener("click", function(){
 });
 close2.addEventListener("click", function(){
     popup2.style.display="none";
-    resetGame()
+    resetApplGame()
 });
 
 
 apples.forEach(function(apple){
-    apple.addEventListener("click", function(){
-        if(apple.style.display = "none") return;
+      apple.addEventListener("click", function(){
+        if(apple.style.display === "none") return;
         apple.style.display = "none";
         applesLeft--;
 
-        checkWin();
+        checkApplWin();
     });
 });
 
 
-
+if(worm){
 worm.addEventListener("click", function(){
     worm.classList.add("big");
 
     setTimeout(function(){
-        resetGame()
+       resetApplGame()
     }, 1000);
 });
+};
 
 
+function checkApplWin(){
+    if(applesLeft <= 0){
+       plant2Win.style.display = "block";
 
-function checkWin(){
-    if(applesLeft === 0){
-        plant2Win.style.display = "block";
-        worm.style.display = "none";
+    if(worm){
+       worm.style.opacity = "0";
+    };
     };
 };
 
-function resetGame(){
+function resetApplGame(){
     apples.forEach(function(a) {
-        a.style.display = "block";
+       a.style.display = "block";
     });
 
     worm.style.display = "block";
@@ -241,6 +243,8 @@ function resetGame(){
 
     applesLeft = apples.length;
 };
+
+
 // ИГРА С ЯБЛОКАМИ //
 
 
@@ -343,7 +347,6 @@ openEggplant.addEventListener("click", function(){
 });
 close4.addEventListener("click", function(){
     popup4.style.display = "none";
-    resetGame()
 });
 
 let pieces = document.querySelectorAll(".piece");
@@ -356,28 +359,31 @@ pieces.forEach((piece, index) => {
     piece.addEventListener("click", function (){
     if(rotations[index] === correctRotation[index]){
         return;
-    }
+    };
     rotations[index] += 90;
     piece.style.transform = `rotate(${rotations[index]}deg)`;
-    checkWin();
+    checEggplkWin();
 });
 
 });
 
-function checkWin(){
+function checEggplkWin(){
     let solved = true;
     for(let m=0; m < rotations.length; m++){
 
         if(rotations[m] !== correctRotation[m]){
             solved = false;
             break;
-        }
-    }
+        };
+    };
 
     if(solved){
         win.style.display = "block";
-    }
-}
+    };
+};
+// ИГРА БАКЛАЖАН //
+
+
 
 // МАЛЕНЬКИЕ ЛИСТОЧКИ //
 let sleaf16=document.getElementById("sleaf16");
@@ -480,6 +486,5 @@ let observer22=new IntersectionObserver(entries=>{
 });
 
 observer22.observe(sleaf23); 
-
 
 });
