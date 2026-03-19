@@ -247,6 +247,68 @@ function resetApplGame(){
 
 // ИГРА С ЯБЛОКАМИ //
 
+// ИГРА С ТЫКВОЙ //
+
+let openPumpkin = document.getElementById("pumpkinGame");
+let popup3 = document.getElementById("popup3");
+let close3 = document.getElementById("closePopup3");
+let plant3Win = document.getElementById("plant3Win");
+
+let pencil = document.querySelector(".pen");
+let drawArea = document.getElementById("canvas");
+let goodpum = document.querySelector(".goodpum");
+let nopum = document.querySelector(".nopum");
+
+let canDraw = false;
+let isDrawing = false;
+let painted = 0;
+
+openPumpkin.addEventListener("click", function(){
+    popup3.style.display="block";
+});
+close3.addEventListener("click", function(){
+    popup3.style.display="none";
+});
+
+pencil.addEventListener("dragstart", function(){
+    canDraw = true;
+});
+
+drawArea.addEventListener("mousedown", function(){
+    if(!canDraw) return;
+    isDrawing = true;
+});
+
+document.addEventListener("mouseup", function(){
+    isDrawing = false;
+});
+
+drawArea.addEventListener("mousemove", (e)=>{
+    if(!isDrawing) return;
+
+    let rect = drawArea.getBoundingClientRect();
+
+    let dot = document.createElement("div");
+    dot.className = "dot";
+
+    dot.style.left = (e.clientX - rect.left) + "px";
+    dot.style.top = (e.clientY - rect.top) + "px";
+
+    drawArea.parentElement.appendChild(dot);
+
+    painted++;
+
+    checkPumWin();
+});
+
+function checkPumWin(){
+    if(painted>1100){
+        plant3Win.style.display = "block";
+        dot.style.display = "none";
+    }
+}
+
+
 
 // МАЛЕНЬКИЕ ЛИСТОЧКИ //
 let sleaf9=document.getElementById("sleaf9");
@@ -486,5 +548,118 @@ let observer22=new IntersectionObserver(entries=>{
 });
 
 observer22.observe(sleaf23); 
+
+
+let sleaf24=document.getElementById("sleaf24");
+let observer23=new IntersectionObserver(entries=>{
+    entries.forEach(entry=>{
+        if(entry.isIntersecting){
+        sleaf24.classList.add("fall24");
+        observer23.unobserve(sleaf24);
+    }
+    });
+});
+
+observer23.observe(sleaf24);
+
+let sleaf25=document.getElementById("sleaf25");
+let observer24=new IntersectionObserver(entries=>{
+    entries.forEach(entry=>{
+        if(entry.isIntersecting){
+        sleaf25.classList.add("fall25");
+        observer24.unobserve(sleaf25);
+    }
+    });
+});
+
+observer24.observe(sleaf25);
+
+let sleaf26=document.getElementById("sleaf26");
+let observer25=new IntersectionObserver(entries=>{
+    entries.forEach(entry=>{
+        if(entry.isIntersecting){
+        sleaf26.classList.add("fall26");
+        observer25.unobserve(sleaf26);
+    }
+    });
+});
+
+observer25.observe(sleaf26);
+
+
+let sleaf27=document.getElementById("sleaf27");
+let observer26=new IntersectionObserver(entries=>{
+    entries.forEach(entry=>{
+        if(entry.isIntersecting){
+        sleaf27.classList.add("fall27");
+        observer26.unobserve(sleaf27);
+    }
+    });
+});
+
+observer26.observe(sleaf27);
+
+let sleaf28=document.getElementById("sleaf28");
+let observer27=new IntersectionObserver(entries=>{
+    entries.forEach(entry=>{
+        if(entry.isIntersecting){
+        sleaf28.classList.add("fall28");
+        observer27.unobserve(sleaf28);
+    }
+    });
+});
+
+observer27.observe(sleaf28);
+
+let sleaf29=document.getElementById("sleaf29");
+let observer28=new IntersectionObserver(entries=>{
+    entries.forEach(entry=>{
+        if(entry.isIntersecting){
+        sleaf29.classList.add("fall29");
+        observer28.unobserve(sleaf29);
+    }
+    });
+});
+
+observer28.observe(sleaf29);
+
+let sleaf30=document.getElementById("sleaf30");
+let observer29=new IntersectionObserver(entries=>{
+    entries.forEach(entry=>{
+        if(entry.isIntersecting){
+        sleaf30.classList.add("fall30");
+        observer29.unobserve(sleaf30);
+    }
+    });
+});
+
+observer29.observe(sleaf30);
+
+let sleaf31=document.getElementById("sleaf31");
+let observer30=new IntersectionObserver(entries=>{
+    entries.forEach(entry=>{
+        if(entry.isIntersecting){
+        sleaf31.classList.add("fall31");
+        observer30.unobserve(sleaf31);
+    }
+    });
+});
+
+observer30.observe(sleaf31);
+
+let sleaf32=document.getElementById("sleaf32");
+let observer31=new IntersectionObserver(entries=>{
+    entries.forEach(entry=>{
+        if(entry.isIntersecting){
+        sleaf32.classList.add("fall32");
+        observer31.unobserve(sleaf32);
+    }
+    });
+});
+
+observer31.observe(sleaf32);
+
+
+// МАЛЕНЬКИЕ ЛИСТОЧКИ //
 
 });
