@@ -1263,9 +1263,19 @@ body{
     position: absolute;
     width: 5.68vw;
     height: 13.44vw;
+    margin-top: 2vw;
+    margin-left: 3vw;
+
+}
+
+#pencil{
+    position: absolute;
+    width: 12.29vw;
+    height: 18.59vw;
+    background: #66AEF4;
+    border-radius: 2vw;
     margin-top: 20vw;
     margin-left: 10vw;
-
 }
 
 .dot{
@@ -1301,9 +1311,25 @@ body{
     position: absolute;
     margin-top: 29vw;
     margin-left: 40vw;
-    width: 31.05vw;
-    height: 13.98vw;
+    width: 29vw;
+    height: 11vw;
     overflow: hidden;
+    border-radius: 0vw 0vw 5vw 5vw;
+    /* background-image: url(../img/pumpkinhalf2.png); */
+    /* background-size: 110%;
+    background-repeat: no-repeat;
+    object-fit: cover;
+    object-position: 0% -10%; */
+}
+
+.nopum1{
+    position: absolute;
+    margin-top: 29vw;
+    margin-left: 40vw;
+    width: 31vw;
+    height: 13vw;
+    pointer-events: none;
+    user-select: none;
 }
 
 

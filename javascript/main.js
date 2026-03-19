@@ -212,7 +212,8 @@ apples.forEach(function(apple){
 
 if(worm){
 worm.addEventListener("click", function(){
-    worm.classList.add("big");
+    worm.classList.toggle("big");
+    worm.style.transition = "2s ease-in-out";
 
     setTimeout(function(){
        resetApplGame()
@@ -257,7 +258,7 @@ let plant3Win = document.getElementById("plant3Win");
 let pencil = document.querySelector(".pen");
 let drawArea = document.getElementById("canvas");
 let goodpum = document.querySelector(".goodpum");
-let nopum = document.querySelector(".nopum");
+
 
 let canDraw = false;
 let isDrawing = false;
@@ -270,7 +271,7 @@ close3.addEventListener("click", function(){
     popup3.style.display="none";
 });
 
-pencil.addEventListener("dragstart", function(){
+pencil.addEventListener("click", function(){
     canDraw = true;
 });
 
@@ -302,7 +303,7 @@ drawArea.addEventListener("mousemove", (e)=>{
 });
 
 function checkPumWin(){
-    if(painted>1100){
+    if(painted>800){
         plant3Win.style.display = "block";
         dot.style.display = "none";
     }
