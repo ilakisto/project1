@@ -1265,7 +1265,7 @@ body{
     height: 13.44vw;
     margin-top: 2vw;
     margin-left: 3vw;
-
+    cursor: pointer;
 }
 
 #pencil{

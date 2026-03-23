@@ -303,7 +303,7 @@ drawArea.addEventListener("mousemove", (e)=>{
 });
 
 function checkPumWin(){
-    if(painted>800){
+    if(painted>1000){
         plant3Win.style.display = "block";
         dot.style.display = "none";
     }
