@@ -846,8 +846,10 @@ body{
 .plant2Win{
     position: absolute;
     margin-top: 14vw;
-    margin-left: 23vw;
+    margin-left: 20vw;
     display: none;
+    width: 34.51vw;
+    height: 32.78vw;
     z-index: 1000000000;
     
 }

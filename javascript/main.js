@@ -97,7 +97,7 @@ openTomato.addEventListener("click", function(){
 });
 close1.addEventListener("click", function(){
     popup1.style.display="none";
-    resetGame()
+    resetTomGame()
 });
 
 
@@ -160,6 +160,11 @@ document.addEventListener('mousemove', (e) => {
     plant1Big.style.display = 'block';
   }
 });
+
+function resetTomGame(){
+    plant1Big.style.display = "none";
+    plant1Small.style.display = "block";
+}
 // ИГРА С ПОМИДОРКАМИ //
 
 
@@ -238,6 +243,7 @@ function resetApplGame(){
     });
 
     worm.style.display = "block";
+    worm.style.opacity = "1";
     worm.classList.remove("big");
 
     plant2Win.style.display = "none";
@@ -269,6 +275,7 @@ openPumpkin.addEventListener("click", function(){
 });
 close3.addEventListener("click", function(){
     popup3.style.display="none";
+    resetPumGame();
 });
 
 pencil.addEventListener("click", function(){
@@ -305,9 +312,9 @@ drawArea.addEventListener("mousemove", (e)=>{
 function checkPumWin(){
     if(painted>1000){
         plant3Win.style.display = "block";
-        dot.style.display = "none";
-    }
-}
+    };
+};
+// ИГРА С ТЫКВОЙ //
 
 
 
@@ -410,6 +417,7 @@ openEggplant.addEventListener("click", function(){
 });
 close4.addEventListener("click", function(){
     popup4.style.display = "none";
+    resetEggplGame()
 });
 
 let pieces = document.querySelectorAll(".piece");
